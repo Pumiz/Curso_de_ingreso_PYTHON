@@ -5,8 +5,8 @@ from tkinter.simpledialog import askstring as prompt
 import customtkinter
 
 '''
-nombre:
-apellido:
+nombre:     Martín
+apellido:   Gomez Valle
 ---
 Ejercicio: entrada_salida_07
 ---
@@ -48,16 +48,44 @@ class App(customtkinter.CTk):
         self.btn_dividir = customtkinter.CTkButton(master=self, text="Dividir", command=self.btn_dividir_on_click)
         self.btn_dividir.grid(row=5, pady=10, columnspan=2, sticky="nsew")
 
+# El codigo funciona pero queda poco estetico que tenga que guardar los valores de los numeros
+# todo el tiempo, como si fueran variables locales.
+#
+
+    def obtener_valores(self):
+        self.primer_numero = self.txt_operador_a.get()
+        self.segundo_numero = self.txt_operador_b.get()
+
     def btn_sumar_on_click(self):
+        self.obtener_valores()
+    
+        suma = int(self.primer_numero) + int(self.segundo_numero)
+
+        alert("Bienvenido", f"El resultado de la suma es: {suma}")
         pass
 
     def btn_restar_on_click(self):
+        self.obtener_valores()
+
+        restar = int(self.primer_numero) - int(self.segundo_numero)
+
+        alert("Bienvenido", f"El resultado de la resta es: {restar}")
         pass
 
     def btn_multiplicar_on_click(self):
+        self.obtener_valores()
+
+        multiplicar = int(self.primer_numero) * int(self.segundo_numero)
+
+        alert("Bienvenido", f"El resultado de la resta es: {multiplicar}")
         pass
 
     def btn_dividir_on_click(self):
+        self.obtener_valores()
+
+        dividir = int(self.primer_numero) // int(self.segundo_numero)
+
+        alert("Bienvenido", f"El resultado de la resta es: {dividir}")
         pass
         
 if __name__ == "__main__":
