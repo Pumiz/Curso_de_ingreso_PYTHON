@@ -5,8 +5,8 @@ from tkinter.simpledialog import askstring as prompt
 import customtkinter
 
 '''
-nombre:
-apellido:
+nombre:     Martín
+apellido:   Gomez Valle
 ---
 Ejercicio: entrada_salida_03
 ---
@@ -34,6 +34,8 @@ class App(customtkinter.CTk):
 
 
     def btn_mostrar_on_click(self):
+        nombre_ingresado = self.txt_nombre.get() #Con el get obtengo el contenido que se guarde en esa variable.
+        alert("Bienvenido", f"El nombre ingresado es: {nombre_ingresado}") #Aca estoy interpolando para no tener problemas cuando tengo que mostras mas de una variable, se usa la "f" antes de las comillas y la variable entre llaves.
         pass
                 
     
