@@ -5,8 +5,8 @@ from tkinter.simpledialog import askstring as prompt
 import customtkinter
 
 '''
-nombre:
-apellido:
+nombre:     Martin
+apellido:   Gomez Valle
 ---
 Ejercicio: entrada_salida_04
 ---
@@ -33,6 +33,10 @@ class App(customtkinter.CTk):
 
 
     def btn_mostrar_on_click(self):
+        nombre_ingresado = prompt("Bienvenido", "Ingrese su nombre")
+        #self.txt_nombre.delete(0, 10)  Le indico desde y hasta que caracter quiero eliminar.
+        self.txt_nombre.delete(0, "end") # Le indico desde y hasta el final, no importa la cantidad que haya.
+        self.txt_nombre.insert(0, nombre_ingresado) # El 0 representa la posición de donde coloca el contenido.
         pass
         
     
