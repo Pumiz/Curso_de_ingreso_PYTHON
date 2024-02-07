@@ -56,12 +56,17 @@ class App(customtkinter.CTk):
         self.primer_numero = self.txt_operador_a.get()
         self.segundo_numero = self.txt_operador_b.get()
 
+    def limpiar_datos(self):
+        self.txt_operador_a.delete(0, "end")
+        self.txt_operador_b.delete(0, "end")
+
     def btn_sumar_on_click(self):
         self.obtener_valores()
     
         suma = int(self.primer_numero) + int(self.segundo_numero)
 
         alert("Bienvenido", f"El resultado de la suma es: {suma}")
+        self.limpiar_datos()
         pass
 
     def btn_restar_on_click(self):
@@ -70,6 +75,7 @@ class App(customtkinter.CTk):
         restar = int(self.primer_numero) - int(self.segundo_numero)
 
         alert("Bienvenido", f"El resultado de la resta es: {restar}")
+        self.limpiar_datos()
         pass
 
     def btn_multiplicar_on_click(self):
@@ -78,6 +84,7 @@ class App(customtkinter.CTk):
         multiplicar = int(self.primer_numero) * int(self.segundo_numero)
 
         alert("Bienvenido", f"El resultado de la resta es: {multiplicar}")
+        self.limpiar_datos()
         pass
 
     def btn_dividir_on_click(self):
@@ -86,6 +93,7 @@ class App(customtkinter.CTk):
         dividir = int(self.primer_numero) // int(self.segundo_numero)
 
         alert("Bienvenido", f"El resultado de la resta es: {dividir}")
+        self.limpiar_datos()
         pass
         
 if __name__ == "__main__":
