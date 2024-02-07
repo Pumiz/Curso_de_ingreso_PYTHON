@@ -5,8 +5,8 @@ from tkinter.simpledialog import askstring as prompt
 import customtkinter
 
 '''
-nombre:
-apellido:
+nombre:     Martín
+apellido:   Gomez Valle
 ---
 TP: ES_Facturaciones
 ---
@@ -48,7 +48,7 @@ class App(customtkinter.CTk):
         self.btn_promedio = customtkinter.CTkButton(master=self, text="PROMEDIO", command=self.btn_promedio_on_click)
         self.btn_promedio.grid(row=4, pady=10, columnspan=2, sticky="nsew")
 
-        self.btn_total_iva = customtkinter.CTkButton(master=self, text="TOTAL c/IVA", command=self.btn_total_iva_on_click)
+        self.btn_total_iva = customtkinter.CTkButton(master=self, text="TOTAL C/IVA", command=self.btn_total_iva_on_click)
         self.btn_total_iva.grid(row=5, pady=10, columnspan=2, sticky="nsew")
 
     def obtener_valores(self):
@@ -58,7 +58,7 @@ class App(customtkinter.CTk):
         self.precio_segundo_producto = self.txt_importe_2.get()
         self.precio_tercer_producto = self.txt_importe_3.get()
 
-        self.suma_total = int(self.precio_primer_producto) + int(self.precio_segundo_producto) + int (self.precio_tercer_producto)
+        self.suma_total = int(self.precio_primer_producto) + int(self.precio_segundo_producto) + int(self.precio_tercer_producto)
 
     def btn_total_on_click(self):
         self.obtener_valores()

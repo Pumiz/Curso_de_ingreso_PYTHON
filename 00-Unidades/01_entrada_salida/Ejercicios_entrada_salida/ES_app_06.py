@@ -41,7 +41,7 @@ class App(customtkinter.CTk):
         primer_numero = self.txt_operador_a.get()
         segundo_numero = self.txt_operador_b.get()
     
-        suma = int(primer_numero) + int(segundo_numero)
+        suma = int(primer_numero) + int(segundo_numero) #parseo el dato
 
         alert("Bienvenido", f"El resultado de la suma es: {suma}")
         pass
