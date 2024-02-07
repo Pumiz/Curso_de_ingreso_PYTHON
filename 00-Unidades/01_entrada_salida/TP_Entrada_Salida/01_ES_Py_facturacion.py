@@ -63,7 +63,6 @@ class App(customtkinter.CTk):
     def btn_total_on_click(self):
         self.obtener_valores()
 
-        
         alert("Bienvenido", f"La suma total de todos los productos es: ${self.suma_total} ")
         pass
 
