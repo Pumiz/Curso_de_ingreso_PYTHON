@@ -5,8 +5,8 @@ from tkinter.simpledialog import askstring as prompt
 import customtkinter
 
 '''
-nombre:
-apellido:
+nombre:     Martín
+apellido:   Gomez Valle
 ---
 TP: ES_Camioneros
 ---
@@ -46,9 +46,39 @@ class App(customtkinter.CTk):
         self.btn_tiempo_llegada.grid(row=4, pady=10, padx=30, columnspan=2, sticky="nsew")
     
     def btn_cantidad_camiones_on_click(self):
+        cantidad_carga_x_camion = 3.5 # toneladas
+
+        toneladas_materiales = self.txt_toneladas.get()
+        toneladas_materiales = float(toneladas_materiales)
+        
+        camiones_llenos = toneladas_materiales // cantidad_carga_x_camion
+        toneladas_sobrantes = toneladas_materiales % cantidad_carga_x_camion
+
+        camiones_extras = (toneladas_sobrantes > 0)
+        camiones_totales = camiones_extras + camiones_llenos
+
+        respuesta = f"Para transportar las {toneladas_materiales}T se necesitan {camiones_totales} camiones."
+
+        alert("Bienvenido", respuesta)
+
         pass
 
     def btn_tiempo_llegada_on_click(self):
+        km_x_hora_camion = 90 #km/h
+        minutos_por_hora = 60 #60 minutos
+
+        cantidad_de_km = self.txt_kilometros.get()
+        cantidad_de_km = float(cantidad_de_km)
+
+        horas_completas = cantidad_de_km // km_x_hora_camion
+        km_restantes = cantidad_de_km % km_x_hora_camion
+
+        calculo_minutos = (km_restantes / km_x_hora_camion) * 100 #transformo el 0,x en x,0 (lo transformo en un numero entero)
+        minutos_restantes = (minutos_por_hora * calculo_minutos) / 100
+
+        respuesta = f"Para realizar {cantidad_de_km}km se tardarian {int(horas_completas)}hs y {int(minutos_restantes)} minutos."
+
+        alert("Bienvenido", respuesta)
         pass
     
     
