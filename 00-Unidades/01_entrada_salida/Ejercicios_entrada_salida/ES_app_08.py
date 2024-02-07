@@ -40,6 +40,14 @@ class App(customtkinter.CTk):
 
 
     def btn_mostrar_on_click(self):
+        primer_numero = self.txt_operador_a.get()
+        segundo_numero = self.txt_operador_b.get()
+
+        calculo_resto = int(primer_numero) % int(segundo_numero)
+
+        mensaje = f"El resto de la divicion entre {primer_numero} y {segundo_numero} es {calculo_resto}"
+
+        alert("Bienvenido", mensaje)
         pass
         
         
