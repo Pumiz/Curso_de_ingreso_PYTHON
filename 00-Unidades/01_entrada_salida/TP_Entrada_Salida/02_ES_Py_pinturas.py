@@ -5,8 +5,8 @@ from tkinter.simpledialog import askstring as prompt
 import customtkinter
 
 '''
-nombre:
-apellido:
+nombre:     Martín
+apellido:   Gomez Valle
 ---
 TP: ES_Pinturas
 ---
@@ -48,9 +48,26 @@ class App(customtkinter.CTk):
         self.btn_convertir_f_c.grid(row=4, pady=10, columnspan=2, sticky="nsew")
     
     def btn_convertir_c_f_on_click(self):
+        self.txt_temperatura_f.delete(0, "end")
+
+        temperatura_c = self.txt_temperatura_c.get()
+        temperatura_c = float(temperatura_c)
+
+        resultado_centigrados = (temperatura_c * 9 / 5) + 32  
+
+        self.txt_temperatura_f.insert(0, resultado_centigrados)
+
         pass
 
     def btn_convertir_f_c_on_click(self):
+        self.txt_temperatura_c.delete(0, "end")
+
+        temperatura_f = self.txt_temperatura_f.get()
+        temperatura_f = float(temperatura_f)
+
+        resultado_fahrenheit = (temperatura_f - 32) * 5 / 9
+
+        self.txt_temperatura_c.insert(0, resultado_fahrenheit)
         pass
     
     
