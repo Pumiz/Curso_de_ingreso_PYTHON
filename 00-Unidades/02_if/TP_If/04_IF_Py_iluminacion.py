@@ -5,8 +5,8 @@ from tkinter.simpledialog import askstring as prompt
 import customtkinter
 
 '''
-nombre:
-apellido:
+nombre:     Martín
+apellido:   Gomez Valle
 ---
 TP: IF_Iluminacion
 ---
@@ -37,12 +37,57 @@ class App(customtkinter.CTk):
 
         self.combobox_cantidad = customtkinter.CTkComboBox(master=self, values= ["1", "2","3","4","5","6","7","8","9","10","11","12"])
         self.combobox_cantidad.grid(row=1, column=1, padx=10, pady=10)
-                
+
         self.btn_calcular = customtkinter.CTkButton(master=self, text="Calcular", command=self.btn_calcular_on_click)
         self.btn_calcular.grid(row=2, pady=20, columnspan=2, sticky="nsew")
 
 
     def btn_calcular_on_click(self):
+        # LAS CUENTAS VAN AL FINAL. SOLO DENTRO CAMBIO LOS VALORES DE LA VARIABLES.
+        marca_elegida = self.combobox_marca.get()
+        cantidad_compradas = self.combobox_cantidad.get()
+        cantidad_compradas = int(cantidad_compradas)
+
+        precio_unitario = 800
+        porcentaje_de_descuento = 0
+        porcentaje_descuento_adicional = 0
+
+        if cantidad_compradas >= 6:
+            porcentaje_de_descuento = 50
+
+        elif cantidad_compradas == 5 and marca_elegida == "ArgentinaLuz":
+            porcentaje_de_descuento = 40
+
+        elif cantidad_compradas == 4:
+            if marca_elegida == "ArgentinaLuz" or "FelipeLamparas":
+                porcentaje_de_descuento = 25
+            elif marca_elegida != "ArgentinaLuz":
+                porcentaje_de_descuento = 20
+
+        elif cantidad_compradas == 3:
+            if marca_elegida == "ArgentinaLuz":
+                porcentaje_de_descuento = 15
+            elif marca_elegida == "FelipeLamparas":
+                porcentaje_de_descuento = 20
+            else:
+                porcentaje_de_descuento = 5
+
+        else:
+            porcentaje_de_descuento = 0
+
+        precio_subtotal = precio_unitario * cantidad_compradas
+        calculo_descuento = (precio_subtotal * porcentaje_de_descuento) // 100
+        precio_final = precio_subtotal - calculo_descuento
+
+        if precio_final >= 4000:
+            porcentaje_descuento_adicional = 5
+            calculo_descuento = (precio_final * porcentaje_descuento_adicional) // 100
+            precio_final = precio_final - calculo_descuento
+        
+        descuento_final =  porcentaje_de_descuento + porcentaje_descuento_adicional
+
+        alert("Factura", f"El precio final por la compra de {cantidad_compradas} lamparas es de ${precio_final} y se le aplicó un descuento del {descuento_final}%")
+        
         pass
         
     
