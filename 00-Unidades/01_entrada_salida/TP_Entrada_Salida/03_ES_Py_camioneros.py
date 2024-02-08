@@ -54,10 +54,12 @@ class App(customtkinter.CTk):
         camiones_llenos = toneladas_materiales // cantidad_carga_x_camion
         toneladas_sobrantes = toneladas_materiales % cantidad_carga_x_camion
 
-        camiones_extras = (toneladas_sobrantes > 0)
-        camiones_totales = camiones_extras + camiones_llenos
 
-        respuesta = f"Para transportar las {toneladas_materiales}T se necesitan {camiones_totales} camiones."
+        #Cambiar por la libreria math
+        camiones_extras = (toneladas_sobrantes > 0)
+        camiones_totales = int(camiones_extras) + camiones_llenos
+
+        respuesta = f"Para transportar las {toneladas_materiales}T se necesitan {int(camiones_totales)} camiones."
 
         alert("Bienvenido", respuesta)
 
