@@ -41,7 +41,7 @@ class App(customtkinter.CTk):
         
         self.txt_importe_3 = customtkinter.CTkEntry(master=self)
         self.txt_importe_3.grid(row=2, column=1)
-       
+
         self.btn_total = customtkinter.CTkButton(master=self, text="TOTAL", command=self.btn_total_on_click)
         self.btn_total.grid(row=3, pady=10, columnspan=2, sticky="nsew")
         
@@ -58,7 +58,7 @@ class App(customtkinter.CTk):
         self.precio_segundo_producto = self.txt_importe_2.get()
         self.precio_tercer_producto = self.txt_importe_3.get()
 
-        self.suma_total = int(self.precio_primer_producto) + int(self.precio_segundo_producto) + int(self.precio_tercer_producto)
+        self.suma_total = float(self.precio_primer_producto) + float(self.precio_segundo_producto) + float(self.precio_tercer_producto)
 
     def btn_total_on_click(self):
         self.obtener_valores()
