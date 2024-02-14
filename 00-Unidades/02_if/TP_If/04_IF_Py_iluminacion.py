@@ -44,38 +44,45 @@ class App(customtkinter.CTk):
 
     def btn_calcular_on_click(self):
         # LAS CUENTAS VAN AL FINAL. SOLO DENTRO CAMBIO LOS VALORES DE LA VARIABLES.
+
+        #Variables
+        PRECIO_UNITARIO = 800
+        porcentaje_de_descuento = 0
+        porcentaje_descuento_adicional = 0
+
+        #Entrada
         marca_elegida = self.combobox_marca.get()
         cantidad_compradas = self.combobox_cantidad.get()
         cantidad_compradas = int(cantidad_compradas)
 
-        precio_unitario = 800
-        porcentaje_de_descuento = 0
-        porcentaje_descuento_adicional = 0
-
+        #Proceso
         if cantidad_compradas >= 6:
             porcentaje_de_descuento = 50
 
-        elif cantidad_compradas == 5 and marca_elegida == "ArgentinaLuz":
-            porcentaje_de_descuento = 40
+        elif cantidad_compradas == 5:
+            if marca_elegida == "ArgentinaLuz":
+                porcentaje_de_descuento = 40
+            else:
+                porcentaje_de_descuento = 30
 
         elif cantidad_compradas == 4:
-            if marca_elegida == "ArgentinaLuz" or "FelipeLamparas":
+            if marca_elegida == "ArgentinaLuz" or marca_elegida == "FelipeLamparas":
                 porcentaje_de_descuento = 25
-            elif marca_elegida != "ArgentinaLuz":
+            else:
                 porcentaje_de_descuento = 20
 
         elif cantidad_compradas == 3:
             if marca_elegida == "ArgentinaLuz":
                 porcentaje_de_descuento = 15
             elif marca_elegida == "FelipeLamparas":
-                porcentaje_de_descuento = 20
+                porcentaje_de_descuento = 10
             else:
                 porcentaje_de_descuento = 5
 
         else:
             porcentaje_de_descuento = 0
 
-        precio_subtotal = precio_unitario * cantidad_compradas
+        precio_subtotal = PRECIO_UNITARIO * cantidad_compradas
         calculo_descuento = (precio_subtotal * porcentaje_de_descuento) // 100
         precio_final = precio_subtotal - calculo_descuento
 
@@ -86,6 +93,7 @@ class App(customtkinter.CTk):
         
         descuento_final =  porcentaje_de_descuento + porcentaje_descuento_adicional
 
+        #Salida
         alert("Factura", f"El precio final por la compra de {cantidad_compradas} lamparas es de ${precio_final} y se le aplicó un descuento del {descuento_final}%")
         
         pass
