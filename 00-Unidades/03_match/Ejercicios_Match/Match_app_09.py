@@ -57,6 +57,51 @@ class App(customtkinter.CTk):
         
     
     def btn_informar_on_click(self):
+        estacion = self.combobox_estaciones.get()
+        destino = self.combobox_destino.get()
+        porcentaje_descuento = 0
+        porcentaje_aumento = 0
+        mensaje = ""
+
+        match (estacion, destino):
+            case ('Invierno', 'Bariloche'):
+                porcentaje_aumento = 20
+                mensaje = f"tiene un aumento del {porcentaje_aumento}%"
+
+            case ('Invierno', 'Cataratas') | ('Invierno', 'Cordoba'):
+                porcentaje_descuento = 10
+                mensaje = f"tiene un descuento del {porcentaje_descuento}%"
+
+            case ('Invierno', 'Mar del plata'):
+                porcentaje_descuento = 20
+                mensaje = f"tiene un descuento del {porcentaje_descuento}%"
+
+            case ('Verano', 'Bariloche'):
+                porcentaje_descuento = 20
+                mensaje = f"tiene un descuento del {porcentaje_descuento}%"
+
+            case ('Verano', 'Cataratas') | ('Verano', 'Cordoba'):
+                porcentaje_aumento = 10
+                mensaje = f"tiene un aumento del {porcentaje_aumento}%"
+
+            case ('Verano', 'Mar del plata'):
+                porcentaje_aumento = 20
+                mensaje = f"tiene un aumento del {porcentaje_aumento}%"
+
+            case ('Primavera', 'Bariloche') | ('Otoño', 'Bariloche') | ('Primavera', 'Cataratas'):
+                porcentaje_aumento = 10
+                mensaje = f"tiene un aumento del {porcentaje_aumento}%"
+
+            case ('Primavera', 'Cordoba'):
+                porcentaje_descuento = 0
+                mensaje = f"no varía el precio."
+
+            case ('Primavera', 'Mar del plata') | ('Otoño', 'Mar del plata'):
+                porcentaje_aumento = 10
+                mensaje = f"tiene un aumento del {porcentaje_aumento}%"
+
+
+        alert("UTN", f"Para viajar en {estacion} a {destino} {mensaje}")
         pass
             
     

@@ -6,8 +6,8 @@ import customtkinter
 
 
 '''
-nombre:
-apellido:
+nombre:     Martín
+apellido:   Gomez Valle
 ---
 Ejercicio: Match_08
 ---
@@ -34,6 +34,17 @@ class App(customtkinter.CTk):
         
     
     def btn_informar_on_click(self):
+        destino = self.combobox_destino.get()
+        
+        match destino:
+            case 'Bariloche' | 'Mar del plata':
+                temperatura_promedio = "Templado"
+            case 'Cataratas':
+                temperatura_promedio = "Caluroso"
+            case 'Ushuaia':
+                temperatura_promedio = "Fresco"
+
+        alert("UTN", f"Usted se encuentra en {destino} y el promedio de la temperatura durante el año es {temperatura_promedio}.")
         pass
     
     
