@@ -5,8 +5,8 @@ from tkinter.simpledialog import askstring as prompt
 import customtkinter
 
 '''
-nombre:
-apellido:
+nombre:     Martín
+apellido:   Gomez Valle
 ---
 TP: Iluminación
 ---
@@ -86,10 +86,10 @@ class App(customtkinter.CTk):
         calculo_descuento = (precio_subtotal * porcentaje_de_descuento) // 100
         precio_final = precio_subtotal - calculo_descuento
 
-            #if precio_final >= 4000:
-            #porcentaje_descuento_adicional = 5
-            #calculo_descuento = (precio_final * porcentaje_descuento_adicional) // 100
-            #precio_final = precio_final - calculo_descuento
+        if precio_final >= 4000:
+            porcentaje_descuento_adicional = 5
+            calculo_descuento = (precio_final * porcentaje_descuento_adicional) // 100
+            precio_final = precio_final - calculo_descuento
         
         #descuento_final =  porcentaje_de_descuento + porcentaje_descuento_adicional
 
