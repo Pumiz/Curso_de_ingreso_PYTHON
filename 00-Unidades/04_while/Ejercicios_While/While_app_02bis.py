@@ -6,8 +6,8 @@ import customtkinter
 
 
 '''
-nombre:
-apellido:
+nombre:     Martín
+apellido:   Gomez Valle
 ---
 Ejercicio: while_02bis
 ---
@@ -29,6 +29,14 @@ class App(customtkinter.CTk):
         
     
     def btn_mostrar_iteracion_on_click(self):
+        numero_sumado = 0
+        filtro_pares = 2
+
+        while filtro_pares <= 10:
+            numero_sumado += filtro_pares
+            filtro_pares += 2
+
+        alert("UTN", numero_sumado)
         pass
     
     
