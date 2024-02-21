@@ -5,8 +5,8 @@ from tkinter.simpledialog import askstring as prompt
 import customtkinter
 
 '''
-nombre:
-apellido:
+nombre:     Martín
+apellido:   Gomez Valle
 ---
 TP: While_validaciones_rising_btl
 ---
@@ -49,11 +49,37 @@ class App(customtkinter.CTk):
         self.txt_legajo = customtkinter.CTkEntry(master=self)
         self.txt_legajo.grid(row=3, column=1)
 
-        self.btn_validar = customtkinter.CTkButton(
-            master=self, text="Validar", command=self.btn_validar_on_click)
+        self.btn_validar = customtkinter.CTkButton(master=self, text="Validar", command=self.btn_validar_on_click)
         self.btn_validar.grid(row=4, pady=20, columnspan=2, sticky="nsew")
 
     def btn_validar_on_click(self):
+        self.txt_apellido.delete(0, "end")
+        self.txt_edad.delete(0, "end")
+        self.txt_legajo.delete(0, "end")
+
+        estado_civil = self.combobox_tipo.get()
+        apellido = prompt("Bienvenido", "Ingrese su apellido")
+
+        edad = prompt("Bienvenido", "Ingrese su edad")
+        edad = int(edad)
+
+        while True:
+            if edad < 18 or edad > 90:
+                alert("Error", "No esta en el rango de edad para este cuestionario")
+                break
+
+            legajo = prompt("Bienvenido", "Ingrese su legajo")
+            legajo = int(legajo)
+
+            if legajo < 1000:
+                alert("Error", "Su legajo no puede iniciar con 0 o tener menos de 4 digitos")
+                break
+
+            self.txt_apellido.insert(0, apellido)
+            self.txt_edad.insert(0, edad)
+            self.txt_legajo.insert(0, legajo)
+            break
+
         pass
 
 
