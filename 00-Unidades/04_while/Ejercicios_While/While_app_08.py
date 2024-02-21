@@ -46,7 +46,7 @@ class App(customtkinter.CTk):
         while True:
             numero_ingresado_str = prompt("UTN", "Ingrese un número")
 
-            if not numero_ingresado_str or numero_ingresado_str == 0:
+            if not numero_ingresado_str or numero_ingresado_str == '0':
                 break
 
             else:
@@ -58,7 +58,7 @@ class App(customtkinter.CTk):
                 elif numero_ingresado < 0:
                     producto_negativos *= numero_ingresado
 
-                if producto_negativos == 1:  #En caso de que no se ingrese ningun negativo se imprime 0
+                if producto_negativos == 1: #En caso de que no se ingrese ningun negativo se imprime 0
                     producto_negativos = 0
 
         self.txt_suma_acumulada.insert(0, suma_acumulada)
