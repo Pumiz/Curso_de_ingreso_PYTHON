@@ -20,6 +20,8 @@ Luego calcular:
     D. Cantidad de números negativos ingresados
     E. Cantidad de ceros
     F. Diferencia entre la cantidad de los números positivos ingresados y los negativos
+    G. El máximo valor. 
+    H. El mínimo valor (incluyendo en que iteracion se encontro, solo la primera)
 
 Informar los resultados mediante alert()
 
@@ -43,12 +45,15 @@ class App(customtkinter.CTk):
         cantidad_ceros = 0
         cantidad_positivos = 0
         cantidad_negativos = 0
-        producto_negativos = 1
+        numero_maximo = 0
+        numero_minimo = 0
+        contador_interaccion = 0
 
         while True:
             numero_ingresado_str = prompt("UTN", "Ingrese un número")
+            contador_interaccion += 1
 
-            if not numero_ingresado_str:
+            if numero_ingresado_str == None:
                 break
 
             else:
@@ -65,14 +70,33 @@ class App(customtkinter.CTk):
                 else:
                     cantidad_ceros += 1
 
+                if numero_ingresado > numero_maximo:
+                    numero_maximo = numero_ingresado
+
+                if numero_ingresado < numero_minimo:
+                    numero_minimo = numero_ingresado
+
+
+
         diferencia_positivos = cantidad_positivos - cantidad_negativos
 
-        alert("UTN", f"Suma positivos: {suma_positivos}")
-        alert("UTN", f"Suma negativos: {suma_negativos}")
-        alert("UTN", f"Cantidad de negativos: {cantidad_negativos}")
-        alert("UTN", f"Cantidad de positivos: {cantidad_positivos}")
-        alert("UTN", f"Cantidad de ceros: {cantidad_ceros}")
-        alert("UTN", f"Diferencia de positivos: {diferencia_positivos}")
+        resultados = [
+            ("Suma positivos", suma_positivos),
+            ("Suma negativos", suma_negativos),
+            ("Cantidad de positivos", cantidad_positivos),
+            ("Cantidad de negativos", cantidad_negativos),
+            ("Diferencia de positivos", diferencia_positivos),
+            ("Cantidad de ceros", cantidad_ceros),
+            ("Maximo valor", numero_maximo),
+            ("MInimo valor", numero_minimo, contador_interaccion)
+        ]
+
+        i = 0
+        while i < 8:
+            mensaje, valor = resultados[i]
+            alert("UTN", f"{mensaje}: {valor}")
+            i += 1
+
         pass
 
     
