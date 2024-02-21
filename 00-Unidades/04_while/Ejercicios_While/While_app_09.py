@@ -48,7 +48,7 @@ class App(customtkinter.CTk):
         while True:
             numero_ingresado_str = prompt("UTN", "Ingrese un número")
 
-            if not numero_ingresado_str:
+            if numero_ingresado_str == None:
                 break
 
             else:
