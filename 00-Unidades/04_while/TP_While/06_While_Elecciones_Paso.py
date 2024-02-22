@@ -37,7 +37,7 @@ class App(customtkinter.CTk):
     def btn_validar_on_click(self):
         ultimo_nombre = ""
         maximos_votos = 0
-        minimo_votos = 0
+        minimo_votos = 1000000
         mas_votado = ""
         menos_votado = ""
         votos_totales = 0
@@ -78,14 +78,14 @@ class App(customtkinter.CTk):
                 menos_votado = nombre
                 edad_menos_votado = edad
 
-            ultimo_nombre = nombre
-            cantidad_candidatos += 1
-            promedio_edades = suma_edades / cantidad_candidatos
+        ultimo_nombre = nombre
+        cantidad_candidatos += 1
+        promedio_edades = suma_edades / cantidad_candidatos
             
-        print("Bienvenido", f"{mas_votado} fue el mas votado con un total de: {maximos_votos} votos")
-        print("Bienvenido", f"{menos_votado} con {edad_menos_votado} años obtuvo la menor cantidad de votos: {minimo_votos}")
-        print("Bienvenido", f"El promedio de edad de los condidatos es: {promedio_edades}")
-        print("Bienvenido", f"La cantidad de votos totales fueron: {votos_totales}")
+        alert("Bienvenido", f"a. {mas_votado} fue el mas votado con un total de: {maximos_votos} votos")
+        alert("Bienvenido", f"b. {menos_votado} con {edad_menos_votado} años obtuvo la menor cantidad de votos: {minimo_votos}")
+        alert("Bienvenido", f"c. El promedio de edad de los condidatos es: {promedio_edades}")
+        alert("Bienvenido", f"d. La cantidad de votos totales fueron: {votos_totales}")
         pass
 
 
