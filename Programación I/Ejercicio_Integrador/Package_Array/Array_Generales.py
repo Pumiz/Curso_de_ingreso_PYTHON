@@ -1,3 +1,5 @@
+from .Especificas import *
+
 #A. Pedir el ingreso de 10 números enteros entre -1000 y 1000.
 def ingresar_10_numeros():
     # Solicita 10 numeros, los valida y los incerta en la lista
@@ -32,14 +34,12 @@ def printear_positivos_negativos(lista):
 
     for i in range(len(lista)):
         numero = lista[i]
-        if numero > 0:
+        if positivo_or_negativo(numero) == "Positivo":
             contador_positivos +=  1
-        elif numero < 0:
+        elif positivo_or_negativo(numero) == "Negativo":
             contador_negativos += 1
-        else:
-            contador_ceros += 1
 
-    print(f"Hay {contador_positivos} numeros positivos\nHay {contador_negativos} numeros negativos\nY hay {contador_ceros} ceros")
+    print(f"Hay {contador_positivos} numeros positivos y hay {contador_negativos} numeros negativos")
 
 
 #C. Mostrar la sumatoria de los números pares.
@@ -50,14 +50,14 @@ def sumar_pares(lista):
     #      lista -> Lista ingresada por el usuario
     #    Retorna:
     #      suma_positivos -> suma de los numeros positivos
-    suma_positivos = 0
+    suma_pares = 0
 
     for i in range(len(lista)):
         numero = lista[i]
-        if numero > 0:
-            suma_positivos += numero
+        if par_or_impar(numero) == "Par":
+            suma_pares += numero
 
-    return suma_positivos
+    return suma_pares
 
 
 #D. Informar el mayor de los números impares.
@@ -71,12 +71,8 @@ def mayor_impar(lista):
     impar_mayor = 0
     for i in range(len(lista)):
         numero = lista[i]
-        if numero % 2 == 1 and numero > impar_mayor:
+        if (par_or_impar(numero) == "Impar" and numero > impar_mayor) or (numero == 1):
             impar_mayor = numero
-
-        elif numero == 1 and numero > impar_mayor:
-            impar_mayor = numero
-            
 
     return impar_mayor
 
@@ -101,7 +97,7 @@ def listar_pares(lista):
     for i in range(len(lista)):
         numero = lista[i]
 
-        if numero % 2 == 0 and numero != 0:
+        if par_or_impar(numero) == "Par" and numero != 0:
             print(numero)
 
 
@@ -115,5 +111,5 @@ def listar_posicion_impares(lista):
     for posicion in range(len(lista)):
         numero = lista[posicion]
 
-        if numero % 2 == 1:
+        if par_or_impar(numero) == "Impar":
             print(posicion + 1)

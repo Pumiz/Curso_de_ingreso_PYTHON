@@ -8,14 +8,16 @@
 #G. Listar los números de las posiciones impares.  
 #H. Salir
 from os import system
-from Array_Generales import *
+from Package_Array.Array_Generales import *
+from Ejercicio_Modulos_Paquetes.Package_Input import Input
 interactuar = True
 numeros_is_ingresados = False
 
+menu = "\n\nA) Ingresar 10 numeros\nB) Cantidad de numeros positivos y negativos\nC) Sumar numeros pares\nD) Numero impar mas grande\nE) Mostrar todos los números ingresados\nF) Mostrar todos los números pares\nG) Mostrar los números de las posiciones impares\nH) Salir\n\nIngrese una opcion: "
 
 while interactuar == True:
-    opcion_seleccionada = input("\n\nA) Ingresar numeros\nB) Cantidad de numeros positivos\nC) Sumar numeros pares\nD) Numero impar mas grande\nE) Listar todos los números ingresados\nF) Listar todos los números pares\nG) Listar los números de las posiciones impares\nH) Salir\n\nIngrese una opcion: ")
-    system("cls")
+    opcion_seleccionada = Input.get_string(menu, "La opcion ingresada no existe", 1)
+    system("clear")#   "clear" -> Mac     "cls" -> Windows
     match opcion_seleccionada:
         case "A":
             numeros_ingresados = ingresar_10_numeros()
