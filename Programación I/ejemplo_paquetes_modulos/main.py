@@ -7,8 +7,11 @@ numero_2 = 3
 print(f"\nEl resultado de la suma es: {funciones.sumar(numero_1, numero_2)}")"""
 
 
-from funciones import sumar  # Si pongo '*' importo todo lo de ese archivo en cambio así solo 
+#from funciones import sumar  # Si pongo '*' importo todo lo de ese archivo en cambio así solo 
 #                              importe la o las funciones que solicito
+
+
+from package_for_modulos.funciones import *
 
 numero_1 = 5
 numero_2 = 3
