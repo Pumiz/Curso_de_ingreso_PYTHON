@@ -27,7 +27,19 @@ class App(customtkinter.CTk):
 
 
     def btn_mostrar_on_click(self):
+        contador_numeros_pares = 0
+
+        numero_ingresado = prompt("UTN", "Ingrese un numero ")
+        numero_ingresado = int(numero_ingresado)
+
+        for i in range(2, numero_ingresado+1):
+            if i % 2 == 0:
+                contador_numeros_pares += 1 
+                print(f"\nNumero par hasta el {numero_ingresado}: {i}")
+
+        print(f"La cantida de numeros pares son: {contador_numeros_pares}")
         pass
+
             
         
     

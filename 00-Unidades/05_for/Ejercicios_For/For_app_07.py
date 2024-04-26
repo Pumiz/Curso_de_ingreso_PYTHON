@@ -26,6 +26,16 @@ class App(customtkinter.CTk):
 
 
     def btn_mostrar_on_click(self):
+        numero = prompt("numero", "ingrese un")
+        numero = int(numero)
+        bundera_divisora = False
+
+        for i in range (2, numero):
+            if numero % i == 0:
+                bundera_divisora = True
+                break
+        if bundera_divisora == False:
+            print ("El numero {numero} es primo")
         pass
         
     

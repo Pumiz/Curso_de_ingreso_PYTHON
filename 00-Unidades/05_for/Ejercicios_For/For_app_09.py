@@ -3,6 +3,8 @@ from tkinter.messagebox import showinfo as alert
 from tkinter.messagebox import askyesno as question
 from tkinter.simpledialog import askstring as prompt
 import customtkinter
+import random
+
 
 '''
 nombre:
@@ -37,10 +39,22 @@ class App(customtkinter.CTk):
 
 
     def btn_mostrar_on_click(self):
-        pass
-                
+        numero_random =  0
+        cantida_intentos = 10
 
-    
+        numero_random = random.randrange(0, 10)
+        numero_random = int(numero_random)
+
+        for i in range(cantida_intentos, 0, -1):
+            numero_ingresado = input("Ingrese un numero ")
+            numero_ingresado = int(numero_ingresado)
+
+            if numero_ingresado == numero_random:
+                print("FELICIDADES TITAN")
+
+        #alert("UTN", numero_random)
+        pass
+
 if __name__ == "__main__":
     app = App()
     app.geometry("300x300")

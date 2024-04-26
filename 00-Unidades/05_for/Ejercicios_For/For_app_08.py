@@ -5,8 +5,8 @@ from tkinter.simpledialog import askstring as prompt
 import customtkinter
 
 '''
-nombre:
-apellido:
+nombre:     Martín
+apellido:   Gomez Valle
 ---
 Ejercicio: for_08
 ---
@@ -35,9 +35,9 @@ class App(customtkinter.CTk):
                     break
             else:
                 cantidad_primos += 1
-                print(i)
+                print(f"Los numeros primos entre 1 y el ingresado son: {i}")
         
-        mensaje = f"cantidad de primos {cantidad_primos}"
+        mensaje = f"La cantidad de primos encontrados es de {cantidad_primos}"
         alert("", mensaje)
                 
         

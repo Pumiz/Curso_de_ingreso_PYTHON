@@ -27,11 +27,19 @@ class App(customtkinter.CTk):
 
     def btn_mostrar_on_click(self):
 
+        bandera_salir = False
+        contador_ciclos = 1
+        
         numero_repetir = prompt("Bienvenido", "Ingrese un numero")
         numero_repetir = int(numero_repetir)
 
-        for i in list(range(0,numero_repetir,1)):
+        for i in range(0,numero_repetir,1):
             alert("UTN","Hola UTN FRA")
+            contador_ciclos += 1
+            if numero_repetir == 9 or contador_ciclos > 10:
+                break
+
+        print("FIN")
         pass
         
     
