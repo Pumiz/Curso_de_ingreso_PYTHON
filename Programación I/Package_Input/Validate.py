@@ -1,10 +1,24 @@
-import Input
+from Input import *
 
-numero_entero = Input.get_int("Ingrese su edad ", "La edad es fuera de rango", 18, 99, 3)
+def validate_number(numero: int|float, minimo: int, maximo: int) -> bool:
+    # _descripcion_
+    #
+    #    Argumento:
+    #      minimo [int, maximo: int] -> _description_
+    #    Retorna:
+    #      bandera_validacion -> _description_
+    reintentadas = 0
 
-print(f"El numero ingresado es: {numero_entero}")
+    while numero <= minimo and numero >= maximo:
+        bandera_validacion = False
+    else:
+        bandera_validacion = True
 
-flotante = Input.get_float("Ingrese su altura metros ", "La altura esta fuera de rango", 1.0, 2.0, 3)
-print(f"El flotante ingresado es: {flotante}")
+    return bandera_validacion
 
-Input.get_string("UTN FRA Avellaneda", 20)
+numero_is_validado = validate_number(89, 18, 99)
+
+if numero_is_validado == True:
+    print("El numero esta en rango")
+else:
+    print("El numero esta fuera de rango")

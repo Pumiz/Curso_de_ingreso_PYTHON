@@ -64,7 +64,7 @@ while cantidad_usarios < 3:                  #UMMENTAR A 5
 
     if capital < capital_minimo:
         capital_minimo = capital
-        posicion_menos_invirtio += cantidad_usarios
+        posicion_menos_invirtio = cantidad_usarios
         nombre_menos_invirtio = nombre
 
     #--------------INSTRUMENTO--------------

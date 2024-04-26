@@ -1,30 +1,14 @@
 #1. Realizar una función para pedir un número por consola. La misma deberá seguir el siguiente prototipo:
 
 
-def get_int(mensaje: str, mensaje_error: str, minimo: int, maximo: int, cant_reintentos: int) -> int|None:
+def get_int(mensaje: str, mensaje_error: str, cant_reintentos: int) -> int|None:
     # Solicita un numero y lo valida segun la cantidad de intentos ingresados.
     #
     #    Argumento:
     #      mensaje [str] -> Texto de ingreso
-    #      mensaje_error [str] -> Texto de error
-    #      minimo [int] -> Rango minimo validacion
-    #      maximo [int] -> Rango maximo validacion
-    #      cant_reintentos [int] -> Cantidad de cant_reintentos
     #    Retorna:
-    #      numero -> Numero validado o None
-    reintentadas = 0
+    #      numero -> Numero ingresado
     numero = int(input(mensaje))
-    while numero <= minimo or numero >= maximo:
-        print(mensaje_error)
-
-        if reintentadas < cant_reintentos:
-            for reintentadas in range(reintentadas, cant_reintentos):
-                reintentadas += 1
-                numero = int(input(f"Te quedan {reintentadas} intentos. Reingrese la edad "))
-                break
-        else:
-            numero = None
-                
         
     return numero
 

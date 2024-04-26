@@ -1,5 +1,5 @@
-def sumar_naturales(numero: int) -> int:   # --> si le doy el 10 suma 1+2+3+4+5+6....+9+10 = 55
-    # _descripcion_
+def sumar_naturales(numero: int) -> int:
+    # Suma todos los numero individuales --> si le doy el 10 suma 1+2+3....+9+10 = 55
     #
     #    Argumento:
     #      numero [int] -> _description_
@@ -12,7 +12,7 @@ def sumar_naturales(numero: int) -> int:   # --> si le doy el 10 suma 1+2+3+4+5+
         return numero + sumar_naturales(numero - 1)
 
 numero_ingresado = int(input("Ingrese los numeros naturales "))
-print(sumar_naturales(numero_ingresado))
+print(f"El resultado es:{sumar_naturales(numero_ingresado)}")
 
 
 
