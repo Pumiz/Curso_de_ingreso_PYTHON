@@ -1,10 +1,10 @@
+#video como se penso, como se penso, linea por linea
+
 
 filas_a = int(input("Ingrese la cantidad de filas de la matriz A: "))
 columnas_a = int(input("Ingrese la cantidad de columnas de la matriz A: "))
 
 matriz_a = [[0]*columnas_a for _ in range (filas_a)]
-
-cantidad_valores = filas_a * columnas_a
 
 for i in range(filas_a):
     for j in range(columnas_a):
@@ -23,7 +23,6 @@ filas_b = int(input("\nIngrese la cantidad de filas de la matriz B: "))
 columnas_b = int(input("Ingrese la cantidad de columnas de la matriz B: "))
 
 matriz_b = [[0]*columnas_b for _ in range (filas_b)]
-
 
 for i in range(filas_b):
     for j in range(columnas_b):
