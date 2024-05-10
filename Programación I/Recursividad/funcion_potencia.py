@@ -1,23 +1,23 @@
 #2. Realizar una función recursiva que calcule la potencia de un número:
 #Logica
-"""bandera_resultado = True
-cantidad_exponenciales = 1
-base_nva = base
+#bandera_resultado = True
+#cantidad_exponenciales = 1
+#base_nva = base
+#
+#while bandera_resultado == True:
+#    if cantidad_exponenciales < exponente_ingresado:
+#        for cantidad_exponenciales in range(cantidad_exponenciales, exponente_ingresado):
+#
+#            resultado = base_nva * base
+#            base_nva = resultado
+#            cantidad_exponenciales += 1
+#
+#            break
+#    else:
+#        bandera_resultado = False
+#
+#print(resultado)
 
-while bandera_resultado == True:
-    if cantidad_exponenciales < exponente_ingresado:
-        for cantidad_exponenciales in range(cantidad_exponenciales, exponente_ingresado):
-
-            resultado = base_nva * base
-            base_nva = resultado
-            cantidad_exponenciales += 1
-
-            break
-    else:
-        bandera_resultado = False
-
-print(resultado)
-"""
 
 def calcular_potencia(base: int, exponente: int):
     # _descripcion_
