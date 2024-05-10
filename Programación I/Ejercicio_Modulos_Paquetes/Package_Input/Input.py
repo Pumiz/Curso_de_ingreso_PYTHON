@@ -1,6 +1,6 @@
 #1. Realizar una función para pedir un número por consola. La misma deberá seguir el siguiente prototipo:
 
-from .Validate import *
+from Ejercicio_Modulos_Paquetes.Package_Input.Validate import *
 
 def get_int(mensaje: str, mensaje_error: str, minimo: int, maximo: int, cant_reintentos: int) -> int|None:
     # Solicita un numero y lo valida segun la cantidad de intentos ingresados.
