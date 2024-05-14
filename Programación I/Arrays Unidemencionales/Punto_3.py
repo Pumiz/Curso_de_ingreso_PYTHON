@@ -1,32 +1,23 @@
 #Escribir una función que calcule y retorne el producto de todos los elementos 
 #de la lista que recibe como parámetro.
 
-def producto_array(lista: int):
-    # _descripcion_
+def producto_array(lista: list):
+    # Multiplica los numero del array
     #
     #    Argumento:
-    #      lista [int] -> _description_
+    #      lista [int] -> Lista ingresada por el usuario
     #    Retorna:
-    #      resultado_producto -> _description_
-    
-    for i in range(len(lista)):
-        numero = 1
-        resultado_producto = numero * i
+    #      resultado_producto -> Calculo Productos
+    resultado_producto = 1
+
+    for i in range(0 , len(lista), 1):
+        resultado_producto *= lista[i]
     
     return resultado_producto
 
-my_lista = [1, 3, 5]
+my_lista = [2, 3, 6, 3]
 
-print(producto_array(my_lista))
+resultado = producto_array(my_lista)
 
-"""def calcular_producto(lista):
-    producto = 1
-    for elemento in lista:
-        producto *= elemento
-    return producto
+print(f"El resultado de productos es: {resultado}")
 
-# Ejemplo de uso:
-mi_lista = [1, 3, 5]
-resultado = calcular_producto(mi_lista)
-print("El producto de los elementos de la lista es:", resultado)
-"""

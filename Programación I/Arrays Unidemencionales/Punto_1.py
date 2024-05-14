@@ -1,4 +1,4 @@
-#Escribir una función que reciba una lista de enteros, la misma calculará y devolverá el p
+#1. Escribir una función que reciba una lista de enteros, la misma calculará y devolverá el p
 #romedio de todos los números.
 
 def promedio_numeros(lista_numerica: int) -> float:

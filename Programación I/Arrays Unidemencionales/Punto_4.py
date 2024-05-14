@@ -1,4 +1,4 @@
-#Escribir una función que reciba como parámetros una lista de 
+#4. Escribir una función que reciba como parámetros una lista de 
 #enteros y retorne la posición del valor máximo encontrado.
 
 def posicion_mas_grande(lista: int):
@@ -19,4 +19,6 @@ def posicion_mas_grande(lista: int):
 
 my_lista = [2,3,6,2,7,2]
 
-print(posicion_mas_grande(my_lista))
+resultado = posicion_mas_grande(my_lista)
+
+print(f"El numero mas alto esta en la posicion: {resultado}")
