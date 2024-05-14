@@ -3,12 +3,25 @@
 
 
 def is_palindromo(cadena: str) -> bool:
-    # _descripcion_
+    # Verifica si una cadena es un Palíndromo
     #
     #    Argumento:
-    #      cadena [str] -> _description_
+    #      cadena [str] -> cadena ingresada por el usuario
     #    Retorna:
-    #      resultado -> _description_
-    
-    for i in range(len(cadena)):
-        pass
+    #      resultado -> booleano
+    is_palindromo = False
+    largo_cadena = (len(cadena)-1)
+    nva_cadena = ""
+
+    for i in range(largo_cadena, -1, -1):
+        nva_cadena += cadena[i]
+
+    if cadena == nva_cadena:
+        is_palindromo = True
+        
+    return is_palindromo
+
+
+cadena = input("Ingrese una cadena: ")
+
+print(is_palindromo(cadena))

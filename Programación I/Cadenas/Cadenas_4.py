@@ -2,19 +2,20 @@
 #Ej: Si recibe como parámetro la cadena “Hooola” debe devolver “Hola”.
 
 def eliminar_repetidos(cadena: str):
-    # _descripcion_
+    # elimina los caracteres repetidos
     #
     #    Argumento:
-    #      cadena [str] -> _description_
+    #      cadena [str] -> cadena ingresada por el usuario
     #    Retorna:
-    #      cadena -> _description_
-    caraceter_anterior = cadena[1]
+    #      cadena -> cadena sin repeticiones
 
     nva_cadena = ""
+    caraceter_anterior = []
 
-    for i in range(len(cadena)):
+    for i in range(0, len(cadena), 1):
         if cadena[i] != caraceter_anterior:
             nva_cadena += cadena[i]
+            caraceter_anterior = cadena[i]
 
     return nva_cadena
 

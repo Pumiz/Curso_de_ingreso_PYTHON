@@ -2,19 +2,19 @@
 #La función deberá devolver el índice en el que se encuentre la primera incidencia de dicho caracter, o -1 en caso de que no esté.
 
 def posicion_del_caracter(cadena: str, caraceter: str):
-    # _descripcion_
+    # Indeca en que posicion esta el caracter indicado dentro de la cadena
     #
     #    Argumento:
     #      cadena [str] -> texto ingresado por el usuario
     #      caraceter [str] -> letra ingresada poe el usuario
     #    Retorna:
     #      retorna -> _description_
-
-        for i in range(len(cadena)):
-            if cadena[i] == caraceter:
-                posicion = i
-                break
-        return posicion
+    posicion = -2
+    for i in range(len(cadena)):
+        if cadena[i] == caraceter:
+            posicion = i
+            break
+    return posicion
 
 string = input("Ingrese una cadena: ")
 letra = input("Ingrese un caracter: ")
