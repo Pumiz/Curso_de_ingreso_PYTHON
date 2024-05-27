@@ -62,7 +62,7 @@ def get_float(mensaje: str, mensaje_error: str, minimo: float, maximo: float, ca
     return numero
 
 #2.Teniendo en cuenta la función del punto 1, crear la función get_string. La misma validará la longitud de la cadena ingresada dado el parámetro recibido. El siguiente prototipo es la base para realizar el ejercicio (se puede extender):
-def get_string(mensaje: str, mensaje_error: str, longitud: int) -> str|None:
+def get_string(mensaje: str, mensaje_error: str, min_caracteres: int, max_caracteres: int) -> str|None:
     # Retorna cantidad de caracteres de una cadena
     #
     #    Argumento:
@@ -70,12 +70,10 @@ def get_string(mensaje: str, mensaje_error: str, longitud: int) -> str|None:
     #      longitud [int] -> Cantidad de caracteres maximos a validar
     #    Retorna:
     #      cantidad_caracteres -> _description_
-    cadena = str(input(mensaje))
+    cadena = input(mensaje)
     cantidad_caracteres = len(cadena)
+    while cantidad_caracteres <= min_caracteres and cantidad_caracteres >= max_caracteres:
+        cadena = input(mensaje_error)
 
-    while validate_lenght(cantidad_caracteres, longitud) == False:
-        print(mensaje_error)
-        cadena = str(input(mensaje))
-        cantidad_caracteres = len(cadena)
-
-    return cadena
+    else:
+        return cadena

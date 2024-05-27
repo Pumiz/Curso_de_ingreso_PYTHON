@@ -6,5 +6,5 @@ print(f"La edad ingresada es: {edad}\n")
 altura = get_float("Ingrese su estatura en metros ", "Su altura esta fuera de rango", 1.5, 2.2, 5)
 print (f"La altura ingresada es: {altura}\n")
 
-nombre = get_string("Ingrese su nombre", "Su nombre se excede en caracteres", 15)
+nombre = get_string("Ingrese su nombre", "Su nombre debe tener mas de 1 caracter y menos de 15", 1,15)
 print(f"El nombre ingresado es: {nombre}\n")
