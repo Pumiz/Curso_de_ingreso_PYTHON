@@ -1,6 +1,5 @@
 #1. Realizar una función para pedir un número por consola. La misma deberá seguir el siguiente prototipo:
-
-from Validate import validate_lenght,validate_number
+from Package_Input.Validate import *
 
 def get_int(mensaje: str, mensaje_error: str, minimo: int, maximo: int, cant_reintentos: int) -> int|None:
     # Solicita un numero y lo valida segun la cantidad de intentos ingresados.
@@ -72,8 +71,50 @@ def get_string(mensaje: str, mensaje_error: str, min_caracteres: int, max_caract
     #      cantidad_caracteres -> _description_
     cadena = input(mensaje)
     cantidad_caracteres = len(cadena)
-    while cantidad_caracteres <= min_caracteres and cantidad_caracteres >= max_caracteres:
+    while cantidad_caracteres <= min_caracteres or cantidad_caracteres >= max_caracteres:
         cadena = input(mensaje_error)
+        cantidad_caracteres = len(cadena)
 
     else:
         return cadena
+
+
+def get_string_propio(mensaje: str, mensaje_error: str, min_caracteres: int, max_caracteres: int) -> str|None:
+    # Retorna cantidad de caracteres de una cadena
+    #
+    #    Argumento:
+    #      cadena [str] -> String ingresada por el usuario
+    #      longitud [int] -> Cantidad de caracteres maximos a validar
+    #    Retorna:
+    #      cantidad_caracteres -> _description_
+    cadena = input(mensaje)
+    nombre_propio = cadena.capitalize()
+    cantidad_caracteres = len(nombre_propio)
+
+    contiene_numero = False
+
+    for char in cadena:
+        if char.isdigit():  #analiza caracter por caracter y se fija si es un digito
+            contiene_numero = True
+
+    while contiene_numero:
+        cadena = input("No puede contener numero, reingrese: ")
+        nombre_propio = cadena.capitalize()
+        cantidad_caracteres = len(nombre_propio)
+
+        for char in nombre_propio:
+            if char.isdigit():  #analiza caracter por caracter y se fija si es un digito
+                continue
+            else:
+                contiene_numero = False
+
+
+    
+
+    while cantidad_caracteres <= min_caracteres or cantidad_caracteres >= max_caracteres:
+        cadena = input(mensaje_error)
+        nombre_propio = cadena.capitalize()
+        cantidad_caracteres = len(nombre_propio)
+
+    else:
+        return nombre_propio
