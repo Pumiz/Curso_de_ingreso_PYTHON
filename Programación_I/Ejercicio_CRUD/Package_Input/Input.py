@@ -118,3 +118,43 @@ def get_string_propio(mensaje: str, mensaje_error: str, min_caracteres: int, max
 
     else:
         return nombre_propio
+
+def get_string_lower(mensaje: str, mensaje_error: str, min_caracteres: int, max_caracteres: int) -> str|None:
+    # Retorna cantidad de caracteres de una cadena
+    #
+    #    Argumento:
+    #      cadena [str] -> String ingresada por el usuario
+    #      longitud [int] -> Cantidad de caracteres maximos a validar
+    #    Retorna:
+    #      cantidad_caracteres -> _description_
+    cadena = input(mensaje)
+    nombre_propio = cadena.lower()
+    cantidad_caracteres = len(nombre_propio)
+
+    contiene_numero = False
+
+    for char in cadena:
+        if char.isdigit():  #analiza caracter por caracter y se fija si es un digito
+            contiene_numero = True
+
+    while contiene_numero:
+        cadena = input("No puede contener numero, reingrese: ")
+        nombre_propio = cadena.lower()
+        cantidad_caracteres = len(nombre_propio)
+
+        for char in nombre_propio:
+            if char.isdigit():  #analiza caracter por caracter y se fija si es un digito
+                continue
+            else:
+                contiene_numero = False
+
+
+    
+
+    while cantidad_caracteres <= min_caracteres or cantidad_caracteres >= max_caracteres:
+        cadena = input(mensaje_error)
+        nombre_propio = cadena.lower()
+        cantidad_caracteres = len(nombre_propio)
+
+    else:
+        return nombre_propio

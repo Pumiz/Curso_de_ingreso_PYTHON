@@ -23,21 +23,9 @@ empleados_trabajando = [{'id': 1, 'nombre': 'Lucas', 'apellido': 'Rodriguez', 'd
 
 historial_de_empleados = empleados_trabajando
 
-
-
-
-
-
 interactuar = True
 
 menu = "\n1. Ingresar Empleado.\n2. Modifical empleado.\n3. Eliminar empleado.\n4. Mostrar datos.\n5. Calcular salario promedio.\n6. Buscar empleado por DNI.\n7. Ordenar empleados.\n7. Salir.\n\nIngrese una opcion: "
-
-#legajo = get_int("Ingrese su legajo: ", "El legajo esta fuera de rango, reintente", 10, 1000, 3)
-#for fila in legajo_choferes:
-#    if legajo in fila:
-#        interactuar = True
-#    else:
-#        print("El legajo ingresado no existe ")
 
 while interactuar:
     opcion_seleccionada = get_int(menu, "La opcion ingresada no existe, reintente.", 1, 8, 3) #Al estar dentro del while true no sale si  se terminan los reintentos
@@ -45,22 +33,27 @@ while interactuar:
     match opcion_seleccionada:
         case 1:
             if len(empleados_trabajando) < 20:
-                nvo_empleado = ingresar_empleado_lista(empleados_trabajando)
+                nvo_empleado = ingresar_empleado_lista(empleados_trabajando, historial_de_empleados)
             else:
                 print(f"No se puede agregar otro empleado. Los empleados trabajando ya son {len(empleados_trabajando)}...")
 
         case 2:
-            for i in range(len(empleados_trabajando)):
-                print(empleados_trabajando[i])
-
+            id_a_modificar = get_int("Ingrese la ID del empleado que desea modificar: ",
+                                    "La ID ingresada no corresponde a un empleado", 1, 100, 5)
+            modificar_empleado(id_a_modificar, empleados_trabajando)
+    
         case 3:
-            pass
+            id_a_eliminar = get_int("Ingrese la ID del empleado que desea eliminar: ",
+                                    "La ID ingresada no corresponde a un empleado", 1, 100, 5)
+            empleado = empleados_trabajando[id_a_eliminar - 1]
+            eliminar_empleado(empleados_trabajando, empleado)
 
         case 4:
-            pass
-
+            for i in range(len(empleados_trabajando)):
+                print(empleados_trabajando[i])
         case 5:
-            pass
+            for i in range(len(historial_de_empleados)):
+                print(historial_de_empleados[i])
 
         case 6:
             pass
