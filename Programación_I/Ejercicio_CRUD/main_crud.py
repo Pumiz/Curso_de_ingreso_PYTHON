@@ -23,13 +23,18 @@ empleados_trabajando = [{'id': 1, 'nombre': 'Lucas', 'apellido': 'Rodriguez', 'd
 
 historial_de_empleados = empleados_trabajando
 
+ultimo_id = get_ultimo_id(empleados_trabajando)
+
 interactuar = True
 
-menu = "\n1. Ingresar Empleado.\n2. Modifical empleado.\n3. Eliminar empleado.\n4. Mostrar datos.\n5. Calcular salario promedio.\n6. Buscar empleado por DNI.\n7. Ordenar empleados.\n7. Salir.\n\nIngrese una opcion: "
+
+menu = "\n1. Ingresar empleado.\n2. Modificar empleado.\n3. Eliminar empleado.\n4. Mostrar datos.\n5. Calcular salario promedio.\n6. Buscar empleado por DNI.\n7. Ordenar empleados.\n8. Salir.\n\nIngrese una opcion: "
+
+
 
 while interactuar:
     opcion_seleccionada = get_int(menu, "La opcion ingresada no existe, reintente.", 1, 8, 3) #Al estar dentro del while true no sale si  se terminan los reintentos
-    system("clear")#   "clear" -> Mac     "cls" -> Windows
+    system("cls")
     match opcion_seleccionada:
         case 1:
             if len(empleados_trabajando) < 20:
@@ -40,23 +45,30 @@ while interactuar:
         case 2:
             id_a_modificar = get_int("Ingrese la ID del empleado que desea modificar: ",
                                     "La ID ingresada no corresponde a un empleado", 1, 100, 5)
-            modificar_empleado(id_a_modificar, empleados_trabajando)
+            if id_a_modificar <= ultimo_id:
+                modificar_empleado(id_a_modificar, empleados_trabajando)
+            else:
+                print("El empleado que desea modificar no existe...")
     
         case 3:
             id_a_eliminar = get_int("Ingrese la ID del empleado que desea eliminar: ",
                                     "La ID ingresada no corresponde a un empleado", 1, 100, 5)
-            empleado = empleados_trabajando[id_a_eliminar - 1]
-            eliminar_empleado(empleados_trabajando, empleado)
+            if id_a_eliminar <= ultimo_id:
+                empleado = empleados_trabajando[id_a_eliminar - 1]
+                empleado_eliminado = eliminar_empleado(empleados_trabajando, empleado)
+            else:
+                print("El empleado qu quiere eliminar no existe...")
 
         case 4:
             for i in range(len(empleados_trabajando)):
                 print(empleados_trabajando[i])
+
         case 5:
             for i in range(len(historial_de_empleados)):
                 print(historial_de_empleados[i])
 
         case 6:
-            pass
+            print(empleado_eliminado)
 
         case 7:
             pass

@@ -83,7 +83,7 @@ def ingresar_empleado_lista(lista_empleados: list, lista_total_empleados: list) 
 
 #-----------------------------------MODIFICAR EMPLEADO-----------------------------------#
 
-def modifcar_elemento_empleado(diccionario_empelado: dict, elemento_modificar: str):
+def modifcar_elemento_empleado(diccionario_empleado: dict, elemento_modificar: str):
     # _descripcion_
     #
     #    Argumento:
@@ -92,7 +92,7 @@ def modifcar_elemento_empleado(diccionario_empelado: dict, elemento_modificar: s
     #      retorna -> _description_
     if elemento_modificar == "salario":
             nvo_elemento = get_float(f"Ingrese el nuevo sueldo en $: ", 
-                                f"El sueldo tiene que terner mayor a $234.315: ",
+                                f"El sueldo tiene que ser mayor a $234.315: ",
                                 234315, 9999999999, 3)
 
     elif elemento_modificar == "dni":
@@ -109,11 +109,13 @@ def modifcar_elemento_empleado(diccionario_empelado: dict, elemento_modificar: s
         question_nombre = get_string_propio(f"Está seguro que quiere cambiar el {elemento_modificar} por: {nvo_elemento}?: ", 
                                             "Porfavor solo indique 'Si' / 'No': ", 1, 3) 
         if question_nombre == "Si":
-            diccionario_empelado[f'{elemento_modificar}'] = nvo_elemento
-            print(f"{elemento_modificar} cambiado con exito!")
+            diccionario_empleado[f'{elemento_modificar}'] = nvo_elemento
+            print(f"El {elemento_modificar} se ha cambiado con exito!")
             break
         else:
             break
+
+
 
 def modificar_empleado(id_buscar: int, lista_empleados):
     # _descripcion_
@@ -140,10 +142,22 @@ def eliminar_empleado(lista_empleados :list, diccionario_eliminar: dict):
     #      id_a_eliminar [tipoDeDato] -> _description_
     #    Retorna:
     #      retorna -> _description_
+
+#Probar con pop
+
     for i in range(len(lista_empleados) - 1):
         if lista_empleados[i] == diccionario_eliminar:
-            lista_empleados.remove(diccionario_eliminar)
-            print("Eliminado con exito")
+            print("Empleado encontrado.")
+            question = get_string_propio(f"Desea eliminar a {diccionario_eliminar['nombre']} {diccionario_eliminar['apellido']} con DNI: {diccionario_eliminar['dni']}? ",
+                    "Porfavor solo indique 'Si' / 'No': ", 1, 3)
+            
+            if question == "Si":
+                empleado_eliminado = lista_empleados.pop(i)
+                print("Eliminado con exito")
+            else:
+                break
+
+    return empleado_eliminado
 
 
 
