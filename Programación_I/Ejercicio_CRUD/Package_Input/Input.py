@@ -111,7 +111,7 @@ def get_string_propio(mensaje: str, mensaje_error: str, min_caracteres: int, max
 
     
 
-    while cantidad_caracteres <= min_caracteres or cantidad_caracteres >= max_caracteres:
+    while cantidad_caracteres < min_caracteres or cantidad_caracteres > max_caracteres:
         cadena = input(mensaje_error)
         nombre_propio = cadena.capitalize()
         cantidad_caracteres = len(nombre_propio)
@@ -151,7 +151,7 @@ def get_string_lower(mensaje: str, mensaje_error: str, min_caracteres: int, max_
 
     
 
-    while cantidad_caracteres <= min_caracteres or cantidad_caracteres >= max_caracteres:
+    while cantidad_caracteres < min_caracteres or cantidad_caracteres > max_caracteres:
         cadena = input(mensaje_error)
         nombre_propio = cadena.lower()
         cantidad_caracteres = len(nombre_propio)

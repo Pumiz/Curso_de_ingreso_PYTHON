@@ -1,16 +1,16 @@
 from Package_Input.Input import *
 #-----------------------------------ID INCREMENTAL-----------------------------------#
-def get_ultimo_id(lista_con_diccionario: list) -> int:
+def get_ultimo_id(lista_con_diccionarios: list) -> int:
     # Funcion que optiene el ID del ultimo empleado de la lista
     #
     #    Argumento:
-    #      lista_con_diccionario [list] -> Lista con los diccionarios de los empleados
+    #      lista_con_diccionarios [list] -> Lista con los diccionarios de los empleados
     #    Retorna:
     #      id_ultimo_empleado [int] -> Numero de id ultimo empleado
     
-    for i in range(len(lista_con_diccionario)):
-        if i == len(lista_con_diccionario) - 1:
-            ultimo_empleado = lista_con_diccionario[i] # ultimo_empleado = diccionario del ultimo empleado de la lista
+    for i in range(len(lista_con_diccionarios)):
+        if i == len(lista_con_diccionarios) - 1:
+            ultimo_empleado = lista_con_diccionarios[i] # ultimo_empleado = diccionario del ultimo empleado de la lista
             id_ultimo_empleado = ultimo_empleado["id"] # id_ultimo_empleado = ID del ultimo empleado de la lista 😎
 
     return id_ultimo_empleado
@@ -36,7 +36,7 @@ def crear_directorio_empleado(ultimo_id: int, nombre: str, apellido: str, dni: i
     return dict_empleado
 
 
-def ingresar_empleado_lista(lista_empleados: list, lista_total_empleados: list) -> list:
+def ingresar_empleado_lista(lista_empleados: list, lista_total_empleados: list, ultimo_id: int):
     # _descripcion_
     #
     #    Argumento:
@@ -70,8 +70,6 @@ def ingresar_empleado_lista(lista_empleados: list, lista_total_empleados: list) 
 
     salario = get_float("Ingrese su salario: ", "Su salario tiene que mayor al salario minimo: ", 234315, 9999999999999, 3)
 
-    ultimo_id = get_ultimo_id(lista_empleados)
-
     lista_empleados.append(crear_directorio_empleado(ultimo_id, nombre, apellido, dni, puesto, salario))
     lista_total_empleados.append(crear_directorio_empleado(ultimo_id, nombre, apellido, dni, puesto, salario))
 
@@ -79,7 +77,7 @@ def ingresar_empleado_lista(lista_empleados: list, lista_total_empleados: list) 
     print("Empleado cargado con exito!")
     
 
-    return lista_empleados   #Puedo retornar otra nueva lista o actualizar la ya hardcodeada.
+    #return lista_empleados   #Puedo retornar otra nueva lista o actualizar la ya hardcodeada.
 
 #-----------------------------------MODIFICAR EMPLEADO-----------------------------------#
 
@@ -115,8 +113,6 @@ def modifcar_elemento_empleado(diccionario_empleado: dict, elemento_modificar: s
         else:
             break
 
-
-
 def modificar_empleado(id_buscar: int, lista_empleados):
     # _descripcion_
     #
@@ -135,7 +131,7 @@ def modificar_empleado(id_buscar: int, lista_empleados):
         modifcar_elemento_empleado(empleado, modificar)
 
 #-----------------------------------ELIMINAR EMPLEADO-----------------------------------#
-def eliminar_empleado(lista_empleados :list, diccionario_eliminar: dict):
+def eliminar_empleado(lista_empleados:list, diccionario_eliminar: dict):
     # _descripcion_
     #
     #    Argumento:
@@ -143,9 +139,7 @@ def eliminar_empleado(lista_empleados :list, diccionario_eliminar: dict):
     #    Retorna:
     #      retorna -> _description_
 
-#Probar con pop
-
-    for i in range(len(lista_empleados) - 1):
+    for i in range(len(lista_empleados)):
         if lista_empleados[i] == diccionario_eliminar:
             print("Empleado encontrado.")
             question = get_string_propio(f"Desea eliminar a {diccionario_eliminar['nombre']} {diccionario_eliminar['apellido']} con DNI: {diccionario_eliminar['dni']}? ",
@@ -154,45 +148,62 @@ def eliminar_empleado(lista_empleados :list, diccionario_eliminar: dict):
             if question == "Si":
                 empleado_eliminado = lista_empleados.pop(i)
                 print("Eliminado con exito")
+                return empleado_eliminado
             else:
                 break
 
-    return empleado_eliminado
-
-
 
 #-----------------------------------MOSTRAR-----------------------------------#
-
-def mostrar_empleados(parametro: int):
-    # _descripcion_
-    #
-    #    Argumento:
-    #      parametro [tipoDeDato] -> _description_
-    #    Retorna:
-    #      retorna -> _description_
-    # Datos de ejemplo
-    data = [
-        ["German", "Scarafilo", "Gerente", "$500.000"],
-        ["Giovanni", "Lucchetta", "Supervisor", "$300.000"]
-    ]
-
+def mostrar_empleados(lista_empleados):
     # Encabezados de la tabla
     headers = ["Nombre", "Apellido", "Puesto", "Salario"]
-
+    
     # Calcular el ancho máximo de cada columna
-    col_widths = [max(len(str(item)) for item in col) for col in zip(headers, *data)]
+    col_widths = [max(len(str(item)) for item in col) for col in zip(headers, *[empleado.values() for empleado in lista_empleados])]
 
-    # Función para formatear una fila
-    def format_row(row, col_widths):
-        return "| " + " | ".join(f"{item:<{width}}" for item, width in zip(row, col_widths)) + " |"
 
-    # Imprimir la tabla
-    print("*" * (sum(col_widths) + len(col_widths) * 3 + 1))
-    print(format_row(headers, col_widths))
-    print("-" * (sum(col_widths) + len(col_widths) * 3 + 1))
-    for row in data:
-        print(format_row(row, col_widths))
-    print("*" * (sum(col_widths) + len(col_widths) * 3 + 1))
+def mostrar(lista_empleados: list):
+    print("*"*73)
+    print(f"|      NOMBRE     |     APELLIDO    |      PUESTO     |      SALARIO    |")
+    print("-"*73)
+    for i in range(len(lista_empleados)):
+        print(f"|  {lista_empleados[i]['nombre']:<13}  |", end = "")
+        print(f"  {lista_empleados[i]['apellido']:<13}  |", end = "")
+        print(f"  {lista_empleados[i]['puesto']:<13}  |", end = "")
+        print(f"  ${lista_empleados[i]['salario']:<12}  |")
+    print("*"*73)
+
+#-----------------------------------BUSCAR POR DNI-----------------------------------#
+def buscar_dni(lista_empleados: list, dni_buscar: int):
+    dni_no_encontrado = True
+
+    for i in range(len(lista_empleados)):
+        if lista_empleados[i]['dni'] == dni_buscar:
+            dni_no_encontrado = False
+            print("Empleado encontrado!")
+            print(f"DNI: {lista_empleados[i]['dni']} || ID: {lista_empleados[i]['id']} || NOMBRE: {lista_empleados[i]['nombre']} || APELLIDO: {lista_empleados[i]['apellido']} || PUESTO: {lista_empleados[i]['puesto']} || SALARIO: ${lista_empleados[i]['salario']}")
+
+    if dni_no_encontrado:
+        print("El DNI ingresado no corresponde a ningun empleado")
+
+#-----------------------------------ORDENAMIENTO -----------------------------------#
+
+def ordenar_empleados(lista_empleados: list, elemento: str, metodo: str):
+
+    for i in range(len(lista_empleados)):
+        for j in range(0, len(lista_empleados)-i-1):
+            if metodo == "Ascendente":
+                if lista_empleados[j][elemento] > lista_empleados[j+1][elemento]:
+                    lista_empleados[j], lista_empleados[j+1] = lista_empleados[j+1], lista_empleados[j]
+            elif metodo == "Desendente":
+                if lista_empleados[j][elemento] < lista_empleados[j+1][elemento]:
+                    lista_empleados[j], lista_empleados[j+1] = lista_empleados[j+1], lista_empleados[j]
+
+    question = get_string_propio("La lista se ha ordenado con exito!\nQuiere ver como quedo? ", "Indique solo 'Si' o 'No': ", 2, 2)
+    if question == "Si":
+        mostrar(lista_empleados)
+
+
 
 
 
